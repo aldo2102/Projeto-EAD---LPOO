@@ -1,0 +1,200 @@
+Algoritmo "Aplicativo - Projeto LPOO"
+
+// Disciplina EAD - Logica de Programação
+// Aluno: Halef Alves de Oliveira CPD: 34546
+
+Var
+   //Variaveis referente ao 1.Divisão
+   a1,a2,a3: inteiro
+
+   // Variaveis referente ao 2.Faixa etaria
+   idade, conta,idademenos21, idademais50: inteiro
+
+   // Variaveis referente ao 3.Numeros Primos
+   a,b,c,d: inteiro
+
+   // Variaveis referente ao 4.Numeros Primos
+   n,valor,valor2: inteiro
+   RP,RF,totalali,totalout: real
+
+   //Variaveis referente ao 5. Fabrica de Produtos
+   Qest,Qproduzida,Qprodutos,Qestp,P,Qvendida: inteiro
+   nome,nomep: caracter
+
+   // Variaveis referente ao 6. Mudança de base
+   numero,op: inteiro
+   binario: vetor [0..7] de inteiro
+   i,j,res,decimal,num,valo: inteiro
+   x,resultado: caracter
+   y,dy : inteiro
+
+Inicio
+   Repita
+      escreval ("---------------------------")
+
+      //Menu
+      Escreval ("1. Divisão")
+      Escreval ("2. Faixa Etaria")
+      Escreval ("3. Números Primos")
+      Escreval ("4. Universidade")
+      Escreval ("5. Fabrica e Produtos")
+      Escreval ("6. Mudança de Base")
+      Escreval ("7. Sair")
+
+      Escreval ("Digite a opção desejada:")
+      leia (a1)
+      escolha a1
+
+         // 1. Divisão
+      caso 1
+         escreval ("Digite os numeros:")
+         leia (a2)
+         leia (a3)
+         escreval("Resultado:")
+         escreva ("*Divisão:")
+         escreval(a2/a3)
+         escreva ("*Resto:")
+         escreval(a2%a3)
+
+         //2. Faixa Etaria
+      caso 2
+         conta <- 0
+         idademenos21 <- 0
+         idademais50 <- 0
+         escreva ("Informe a idade: ")
+         leia (idade)
+         enquanto (idade > 0) faca
+            conta <- conta + 1
+            se (idade < 21) entao
+               idademenos21 <- idademenos21 + 1
+            senao
+               se (idade > 50) entao
+                  idademais50 <- idademais50 + 1
+               fimse
+            fimse
+            escreva ("Informe a idade: ")
+            leia (idade)
+         fimenquanto
+         escreval("Com menos de 21: ", idademenos21)
+         escreval("Com mais de 50: ", idademais50)
+
+         //3. Numeros Primos
+      caso 3
+         escreval("Digite o valor:")
+         leia (c)
+         para a de 1 ate c faca
+            d<-0
+            para b de 1 ate a faca
+               se (a mod b=0) então
+                  d<-d+1
+               fimse
+            fimpara
+            se(d=2)entao
+               escreva (a)
+            fimse
+         fimpara
+         Escreval ()
+
+         // 4. Universidade
+      caso 4
+         n <- 0
+         valor <- 0
+         valor2 <- 0
+         escreva("Informe sua renda pessoal:")
+         leia(RP)
+         faca enquanto(RP > 0)
+         n <- n + 1
+         escreva("Informa sua renda familiar:")
+         leia(RF)
+         escreva("Informe suas despesas com alimentação:")
+         leia(totalali)
+         escreva("Informe o valor gasto com outras despesas:")
+         leia(totalout)
+
+         se (totalout > 200) entao
+            valor <- valor + 1
+         fimse
+         se (RP > RF) entao
+            valor2 <- valor2 + 1
+         Fimse
+         escreval(((totalali+totalout)*100)/(RP + RF), "% são gastos com alimentos e outras despesas. ")
+         escreval ("Informe novamente sua renda pessoal:")
+         leia (RP)
+
+         escreval((valor*100)/n, "% gastam acima de R$ 200,00 com outras despesas.")
+         escreval("Numero de alunos com renda pessoal maior que a renda familiar:", valor2)
+
+         // 5. Fabrica de Produtos
+      caso 5
+         P <- 1
+         Qestp <- 0
+
+         escreval("Quantidades de produto na fabrica: ")
+         leia(Qprodutos)
+         faca enquanto (P <= Qprodutos)
+         escreval("Nome do produto: ")
+         leia(nome)
+         escreval("Quantidade produzida: ")
+         leia(Qproduzida)
+         escreval("Quantidade vendida: ")
+         leia(Qvendida)
+         Qest <- Qproduzida - Qvendida
+         se (Qest > Qestp)entao
+            Qestp <- Qest
+            nomep <- nome
+            escreval("Produto: ", nome)
+            escreval("A quantidade deste produto: ", Qest , " itens ")
+            se (Qest < 50) entao
+               escreval("Atenção o produto precisa de mais produção!")
+               P <- P + 1
+               escreval("Produto com maior estoque: ",nomep, "com:" ,Qestp, " peças.")
+            fimse
+         fimse
+
+         // 6. Mudança de Base
+      caso 6
+         escreval("Quantos números quer converter:")
+         leia(numero)
+         escreval(" - Para converter de binario para decimal digite 1")
+         escreval(" - Para converter de decimal para binario digite 2")
+         leia(op)
+         escolha(op)
+
+            // Binario para decimal
+         caso 1
+            para i de 7 ate 0 passo -1 faca
+               escreva ("Digite o digito ",8-i,":")
+               leia (binario [i])
+               se binario [i] =1 entao
+                  res <- 1
+                  para j de 1 ate i faca
+                     res <- res*2
+                  fimpara
+                  decimal <- decimal+binario [i] * res
+               fimse
+            fimpara
+            escreval ("Decimal:", decimal)
+
+            // Decimal para binario
+         caso 2
+            Escreval ("Digite um valor Decimal: ")
+            Leia (Num)
+            Valo <- (Num)
+            enquanto (Num > 0) faca
+               Escolha (Num mod 2)
+               caso 0
+                  Resultado <- ("0" + Resultado)
+               caso 1
+                  Resultado <- ("1" + Resultado)
+               FimEscolha
+               Num <- (Num div 2)
+            FimEnquanto
+            Escreval ("O valor: ", Valo, " em Decimal será de: ", Resultado, " em Binários!!")
+         fimescolha
+
+         // Opção Sair
+      caso 7
+Fimalgoritmo
+
+Fimescolha
+ATE a1 = 7
